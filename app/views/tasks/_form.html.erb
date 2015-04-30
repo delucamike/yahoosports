@@ -1,0 +1,9 @@
+<%= simple_form_for task do |f| %>
+  <%= f.input :interval %>
+  <%= f.input :league_name, collection: League.pluck(:LeagueName), include_blank: false %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+<br>
+<%= link_to 'Cancel', tasks_path %>

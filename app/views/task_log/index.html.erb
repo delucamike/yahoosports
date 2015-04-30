@@ -1,0 +1,31 @@
+<h1>Task #<%= @task.id %> Logs</h1>
+
+<%= link_to 'Go Back to Tasks', tasks_path %>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>League Name</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Run Time</th>
+      <th>Records Updated</th>
+      <th>Records Inserted</th>
+      <th>Games in Progress</th>
+    </tr>
+  </thead>
+
+  <% @task.logs.order(id: :desc).each do |log| %>
+    <tr>
+      <td><%= log.league_name %></td>
+      <td><%= log.start_time %></td>
+      <td><%= log.end_time %></td>
+      <td><%= distance_of_time_in_words(log.start_time, log.end_time) %></td>
+      <td><%= log.records_updated %></td>
+      <td><%= log.records_inserted %></td>
+      <td><%= log.games_in_progress %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Go Back to Tasks', tasks_path %>
